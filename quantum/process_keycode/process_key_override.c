@@ -30,7 +30,7 @@
 // #define BENCH_KEY_OVERRIDE
 
 // For debug output (needs keyboard debugging enabled as well)
-// #define DEBUG_KEY_OVERRIDE
+////#define DEBUG_KEY_OVERRIDE
 
 #ifdef DEBUG_KEY_OVERRIDE
 #    define key_override_printf dprintf
@@ -258,6 +258,7 @@ static bool try_activating_override(const uint16_t keycode, const uint8_t layer,
         }
 
         // Fast, but not full mods check. Most key presses will not have any mods down, and most overrides will require mods. Hence here we filter overrides that require mods to be down while no mods are down
+        key_override_printf("(%u) ", i);
         if (active_mods == 0 && override->trigger_mods != 0) {
             key_override_printf("Not activating override: Modifiers don't match\n");
             continue;

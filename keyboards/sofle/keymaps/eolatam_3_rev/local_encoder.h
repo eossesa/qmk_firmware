@@ -20,7 +20,7 @@
 
 #ifdef ENCODER_ENABLE
 
-void move_encoder0(const bool clockwise) {
+void move_encoder_0(const bool clockwise) {
     const uint16_t lnum = get_highest_layer(layer_state);
     if (lnum == _RAISE_ES_LA || lnum == _RAISE_EN_US) {
         // mouse horizontal wheel.
@@ -40,7 +40,7 @@ void move_encoder0(const bool clockwise) {
     }
 }
 
-void move_encoder1(const bool clockwise) {
+void move_encoder_1(const bool clockwise) {
     const uint16_t mods = get_mods();
     const bool control_is_pressed = (mods & MOD_MASK_CTRL) ? true : false;
     const bool shift_is_pressed = (mods & MOD_MASK_SHIFT) ? true : false;
@@ -69,9 +69,9 @@ void move_encoder1(const bool clockwise) {
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
-        move_encoder0(clockwise);
+        move_encoder_0(clockwise);
     } else {
-        move_encoder1(clockwise);
+        move_encoder_1(clockwise);
     }
 
     return true;
